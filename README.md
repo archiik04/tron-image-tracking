@@ -24,12 +24,6 @@ It leverages **WebXR** technologies to create a lightweight and immersive browse
 
 ---
 
-## 📽 Demo Video
-
-[Watch the demo video](./tron_demo.mp4)
-
----
-
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
