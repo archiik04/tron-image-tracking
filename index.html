@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ngokevin/aframe-event-set-component@3.0.1/dist/aframe-event-set-component.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+      }
+
+      
+      .background-effects {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .hex-grid {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: 
+          linear-gradient(90deg, #00ffff08 1px, transparent 1px) 0 0 / 30px 30px,
+          linear-gradient(#00ffff08 1px, transparent 1px) 0 0 / 30px 30px;
+        animation: moveGrid 20s linear infinite;
+      }
+
+      .neon-circles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .neon-circle {
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid #00ffff20;
+        box-shadow: 0 0 20px #00ffff10;
+        animation: pulseAndMove 10s infinite;
+      }
+
+      .neon-circle:nth-child(1) {
+        width: 200px;
+        height: 200px;
+        left: 20%;
+        top: 30%;
+        animation-delay: 0s;
+      }
+
+      .neon-circle:nth-child(2) {
+        width: 300px;
+        height: 300px;
+        right: 25%;
+        bottom: 20%;
+        animation-delay: 2s;
+      }
+
+      .neon-circle:nth-child(3) {
+        width: 150px;
+        height: 150px;
+        left: 40%;
+        top: 60%;
+        animation-delay: 4s;
+      }
+
+      
+      .neon-trails {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: 
+          radial-gradient(circle at 50% 50%, #00ffff05 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, #00ffff05 0%, transparent 35%);
+        animation: trailsPulse 8s ease-in-out infinite;
+      }
+
+      #title {
+        text-align: center;
+        color: #062323;
+        font-family: 'Press Start 2P', sans-serif;
+        font-size: 4rem;
+        text-shadow: 0 0 20px #115151, 0 0 30px #00FFFF, 0 0 40px #00FFFF;
+        animation: pulse 2s infinite;
+        position: absolute;
+        top: 10%;
+        z-index: 10;
+      }
+
+      .social-button {
+        background-color: #000;
+        border: 3px solid #00FFFF;
+        color: #00FFFF;
+        font-family: 'Press Start 2P', sans-serif;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF;
+        transition: all 0.3s ease-in-out;
+        z-index: 10;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .social-button img {
+        width: 30px;
+        height: 30px;
+        filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(170deg) brightness(100%);
+      }
+
+      .social-button.visible {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .social-button:hover {
+        background-color: #00FFFF20;
+        box-shadow: 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF;
+        transform: scale(1.1);
+      }
+
+      #instagram-btn {
+        left: 20px;
+        bottom: 20px;
+      }
+
+      #linkedin-btn {
+        left: 100px;
+        bottom: 20px;
+      }
+
+      #website-btn {
+        left: 180px;
+        bottom: 20px;
+      }
+
+      .tron-button {
+        background-color: #000;
+        border: 3px solid #00FFFF;
+        color: #00FFFF;
+        font-family: 'Press Start 2P', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        padding: 15px 40px;
+        cursor: pointer;
+        outline: none;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF;
+        transition: all 0.3s ease-in-out;
+        z-index: 10;
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+      }
+
+      .tron-button.visible {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .tron-button:hover {
+        background-color: #00FFFF;
+        color: #000;
+        box-shadow: 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF;
+      }
+
+      #gif-left, #gif-right {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 30%;
+        z-index: 5;
+        border: 3px solid #00FFFF;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #00FFFF40;
+        overflow: hidden;
+      }
+
+      #gif-left {
+        left: 5%;
+      }
+
+      #gif-right {
+        right: 5%;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+        }
+        50% {
+          text-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff;
+        }
+      }
+
+      @keyframes moveGrid {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(30px);
+        }
+      }
+
+      @keyframes pulseAndMove {
+        0% {
+          transform: scale(1) translate(0, 0);
+          opacity: 0.2;
+        }
+        50% {
+          transform: scale(1.2) translate(20px, 20px);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1) translate(0, 0);
+          opacity: 0.2;
+        }
+      }
+
+      @keyframes trailsPulse {
+        0%, 100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.2);
+        }
+      }
+
+      a-scene {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+      }
+
+      .clickable {
+        cursor: pointer;
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-effects">
+      <div class="hex-grid"></div>
+      <div class="neon-trails"></div>
+      <div class="neon-circles">
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+      </div>
+    </div>
+
+    <div id="title">
+      TRON TECH EVENT
+    </div>
+
+    <iframe id="gif-left" src="https://giphy.com/embed/soB0cYUaOWqv6" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <iframe id="gif-right" src="https://giphy.com/embed/7chLJeFOr49zrXnS8b" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    
+    <!-- Buttons -->
+    <button id="instagram-btn" class="social-button">
+      <img src="./assets/ig.png" alt="Instagram">
+    </button>
+    <button id="linkedin-btn" class="social-button">
+      <img src="./assets/lk.png" alt="LinkedIn">
+    </button>
+    <button id="website-btn" class="social-button">
+      <img src="./assets/website.png" alt="Website">
+    </button>
+
+    <button id="register-button" class="tron-button">
+      REGISTER
+    </button>
+
+    <a-scene 
+      mindar-image="imageTargetSrc: ./assets/tron.mind;" 
+      color-space="sRGB" 
+      renderer="colorManagement: true, physicallyCorrectLights" 
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+      embedded>
+      
+      <a-assets>
+        <a-asset-item id="avatarModel" src="./assets/jet.glb"></a-asset-item>
+        <audio id="tronMusic" src="./assets/tronmusic.mp3" preload="auto" loop></audio>
+      </a-assets>
+
+      <a-camera position="0 0 5" look-controls="enabled: false" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model 
+          id="ar-model"
+          src="#avatarModel" 
+          position="0.008 0.008 0.008" 
+          scale="0.002 0.002 0.002" 
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear;">
+        </a-gltf-model>
+      </a-entity>
+    </a-scene>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const sceneEl = document.querySelector('a-scene');
+        const registerButton = document.getElementById('register-button');
+        const tronMusic = document.getElementById('tronMusic');
+        const socialButtons = document.querySelectorAll('.social-button');
+        
+        
+        function handleSocialClick(url) {
+          window.open(url, '_blank');
+        }
+
+       
+        document.getElementById('instagram-btn').addEventListener('click', () => {
+          handleSocialClick('https://www.instagram.com/mlsakiit/');
+        });
+
+        document.getElementById('linkedin-btn').addEventListener('click', () => {
+          handleSocialClick('https://www.linkedin.com/company/msckiit/');
+        });
+
+        document.getElementById('website-btn').addEventListener('click', () => {
+          handleSocialClick('https://mlsakiit.com/');
+        });
+
+        // Register button 
+        registerButton.addEventListener('click', function(evt) {
+          evt.preventDefault();
+          handleSocialClick('https://mlsakiit.com/');
+        });
+
+        // music
+        document.body.addEventListener('click', function() {
+          tronMusic.play().catch(function(error) {
+            console.log("Audio play failed:", error);
+          });
+        });
+
+        sceneEl.addEventListener('targetFound', function() {
+          console.log('Target found');
+          registerButton.classList.add('visible');
+          socialButtons.forEach(button => button.classList.add('visible'));
+        });
+
+        sceneEl.addEventListener('targetLost', function() {
+          console.log('Target lost');
+          registerButton.classList.remove('visible');
+          socialButtons.forEach(button => button.classList.remove('visible'));
+        });
+
+        sceneEl.addEventListener('renderstart', () => {
+          console.log('MindAR started');
+        });
+      });
+    </script>
+  </body>
+</html>
