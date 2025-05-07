@@ -55,60 +55,53 @@ tron-ar-experience/
 ````
 
 ---
-
 ## 🚀 How to Run
 
 1. **Clone this repository** or download the source code:
 
    ```bash
    git clone https://github.com/yourusername/tron-ar-experience.git
-````
+   ```
 
-2. **Host the project locally** using a web server:
+2. **Host the project locally** using a simple web server:
 
    ```bash
    cd tron-ar-experience
    npx serve .
    ```
 
-   Or host it online using [GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), or [Vercel](https://vercel.com/).
+   *Or host it online via* [GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/), *or* [Vercel](https://vercel.com/).
 
-3. **Print the image target (`tron.mind`)** or display it on another screen.
+3. **Print the image target** (`Tron AR tracking image.png`) or open it on another device screen.
 
-4. **Open the hosted site on your phone or AR-supported device**, and allow camera permissions.
+4. **Scan the marker** from your phone or an AR-supported browser. Allow camera access.
 
 ---
 
-## 🎥 What Happens
+## 🌐 What Happens
 
 * A neon-themed home screen animates into view.
 * Users scan the event marker image.
 * A 3D Tron-style jet model appears through AR.
-* Interactive icons let users follow social media and register for the event.
-* Background music and floating visual elements elevate the experience.
-
----
-
-## 📸 Preview
-
-![Preview](./assets/preview.png) <sub>*Optional: Add a screenshot or gif of the live AR experience*</sub>
+* Interactive icons lead to social media and event registration.
+* Floating visuals and ambient music enhance the vibe.
 
 ---
 
 ## 📌 Notes
 
-* Make sure to use an AR-compatible browser (Chrome, Firefox, Safari on mobile).
-* Ensure lighting is adequate for marker detection.
-* All assets are customizable for your own event branding.
+* Use a mobile device or AR-compatible browser (Chrome, Firefox, Safari).
+* Good lighting helps with accurate image tracking.
+* All assets (model, marker, text) can be modified for your own event theme.
 
 ---
 
-## ✅ Future Additions
+## 🔮 Future Additions
 
-* Animated model interactions
-* Countdown timer to event
+* Animated interactions with the model
+* Countdown timer for event launch
 * RSVP form integration
-* Leaderboards or reward tracking via AR
+* Leaderboard or reward tracking through AR
 
 ---
 
