@@ -2,7 +2,7 @@
 # 🌀 Tron-Themed AR Web Experience  
 *A Tron-themed image-tracking AR built to promote MLSA events and increase attendee registrations.*
 
----
+
 
 ## Overview
 
@@ -10,7 +10,6 @@ This project is a **Tron-themed Augmented Reality (AR) web experience** built us
 
 It leverages **WebXR** technologies to create a lightweight and immersive browser-based AR experience that helps **engage users, promote tech events**, and **encourage registrations** through interactive visuals.
 
----
 
 ## ✨ Features
 
@@ -22,7 +21,6 @@ It leverages **WebXR** technologies to create a lightweight and immersive browse
 - 📸 Live Giphy animations for added energy and style
 - 🖼️ Custom marker-based 3D content reveal
 
----
 
 ## 🛠️ Tech Stack
 
@@ -35,11 +33,9 @@ It leverages **WebXR** technologies to create a lightweight and immersive browse
 | **Google Fonts** | Retro 'Press Start 2P' font |
 | **GIPHY iFrames** | Dynamic visual enhancements |
 
----
 
 ## 📂 Folder Structure
 
-```
 
 tron-ar-experience/
 ├── index.html
@@ -52,9 +48,7 @@ tron-ar-experience/
 │   ├── website.png        # Website icon
 │   └── tronMusic.mp3      # Optional event music
 
-````
 
----
 ## 🚀 How to Run
 
 1. **Clone this repository** or download the source code:
@@ -76,7 +70,6 @@ tron-ar-experience/
 
 4. **Scan the marker** from your phone or an AR-supported browser. Allow camera access.
 
----
 
 ## 🌐 What Happens
 
@@ -86,7 +79,6 @@ tron-ar-experience/
 * Interactive icons lead to social media and event registration.
 * Floating visuals and ambient music enhance the vibe.
 
----
 
 ## 📌 Notes
 
@@ -94,7 +86,6 @@ tron-ar-experience/
 * Good lighting helps with accurate image tracking.
 * All assets (model, marker, text) can be modified for your own event theme.
 
----
 
 ## 🔮 Future Additions
 
@@ -103,23 +94,12 @@ tron-ar-experience/
 * RSVP form integration
 * Leaderboard or reward tracking through AR
 
----
-
-## 🧾 License
-
-This project is open for modification and educational use.
-Attribution appreciated if used in promotional contexts.
-
----
-
 ## 👩‍💻 Created With
 
 * [A-Frame](https://aframe.io/)
 * [MindAR](https://hiukim.github.io/mind-ar-js-doc/)
 * [Google Fonts – Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P)
 * [Giphy](https://giphy.com/)
-
----
 
 > For support, feature requests, or showcasing your version, feel free to raise an issue or contribute!
 
