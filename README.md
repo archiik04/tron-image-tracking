@@ -11,18 +11,18 @@ This project is a **Tron-themed Augmented Reality (AR) web experience** built us
 It leverages **WebXR** technologies to create a lightweight and immersive browser-based AR experience that helps **engage users, promote tech events**, and **encourage registrations** through interactive visuals.
 
 
-## ✨ Features
+## Features
 
-- 🎯 Image-tracking AR using MindAR
-- 🛸 3D model rendering (`jet.glb`)
-- 🎧 Event soundtrack (optional music integration)
-- 🌌 Cyberpunk-style visual effects (hex grid, floating particles, neon trails)
-- 📱 Integrated social media and registration buttons
-- 📸 Live Giphy animations for added energy and style
-- 🖼️ Custom marker-based 3D content reveal
+- Image-tracking AR using MindAR
+- 3D model rendering (`jet.glb`)
+- Event soundtrack (optional music integration)
+- Cyberpunk-style visual effects (hex grid, floating particles, neon trails)
+- Integrated social media and registration buttons
+- Live Giphy animations for added energy and style
+- Custom marker-based 3D content reveal
 
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology | Purpose |
 |------------|---------|
@@ -34,7 +34,7 @@ It leverages **WebXR** technologies to create a lightweight and immersive browse
 | **GIPHY iFrames** | Dynamic visual enhancements |
 
 
-## 📂 Folder Structure
+## Folder Structure
 
 
 tron-ar-experience/
@@ -49,7 +49,7 @@ tron-ar-experience/
 │   └── tronMusic.mp3      # Optional event music
 
 
-## 🚀 How to Run
+## How to Run
 
 1. **Clone this repository** or download the source code:
 
@@ -71,7 +71,7 @@ tron-ar-experience/
 4. **Scan the marker** from your phone or an AR-supported browser. Allow camera access.
 
 
-## 🌐 What Happens
+## What Happens
 
 * A neon-themed home screen animates into view.
 * Users scan the event marker image.
@@ -80,21 +80,21 @@ tron-ar-experience/
 * Floating visuals and ambient music enhance the vibe.
 
 
-## 📌 Notes
+## Notes
 
 * Use a mobile device or AR-compatible browser (Chrome, Firefox, Safari).
 * Good lighting helps with accurate image tracking.
 * All assets (model, marker, text) can be modified for your own event theme.
 
 
-## 🔮 Future Additions
+## Future Additions
 
 * Animated interactions with the model
 * Countdown timer for event launch
 * RSVP form integration
 * Leaderboard or reward tracking through AR
 
-## 👩‍💻 Created With
+## Created With
 
 * [A-Frame](https://aframe.io/)
 * [MindAR](https://hiukim.github.io/mind-ar-js-doc/)
